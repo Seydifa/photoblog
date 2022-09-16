@@ -1,7 +1,10 @@
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
-from authentification.views import LoginPage, logout_user, home, SignUp
+from authentification.views import home, SignUp
+from blog.views import Telechargerphoto
+from photoblog import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -22,5 +25,10 @@ urlpatterns = [
         template_name="authentification/password-change-done.html"
     ), name='change-password-done'),
     path('signUp', SignUp.as_view(),
-         name='signup')
+         name='signup'),
+    path('photo/uploader', Telechargerphoto,
+         name="photo-uploader")
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS)

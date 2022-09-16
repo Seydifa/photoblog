@@ -1,8 +1,8 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import get_user_model
+from blog.models import Photo
 
-class Photomodel(UserCreationForm):
+
+class Photoform(forms.ModelForm):
     class Meta:
-        model = get_user_model("Photo")
+        model = Photo
         fields = ('image', "caption")

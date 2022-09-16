@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2>Telecharger votre photo</h2>
-    <form>
+    <form method="post" enctype="multipart/form-data">
         {{ form.as_p }}
         <button type="submit">Telecharger</button>
     </form>
