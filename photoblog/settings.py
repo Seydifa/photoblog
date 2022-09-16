@@ -92,6 +92,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         "NAME": "authentification.validators.ContainsLetterValidator"
+    },
+    {
+        "NAME": "authentification.validators.ContainsDigitsValidator"
     }
 ]
 

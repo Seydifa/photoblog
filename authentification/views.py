@@ -40,7 +40,7 @@ def logout_user(request):
 
 @login_required
 def home(request):
-    return render(request, 'home.html')
+    return render(request, 'blog/home.html')
 
 
 class SignUp(View):

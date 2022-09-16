@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 from authentification.views import LoginPage, logout_user, home, SignUp
-from authentification.forms import Loginform
 
 urlpatterns = [
     path("admin/", admin.site.urls),

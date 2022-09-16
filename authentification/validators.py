@@ -11,3 +11,15 @@ class ContainsLetterValidator:
 
     def get_help_text(self):
         return "Le mot de passe doit contenir au moins une lettre majuscule et minuscule"
+
+
+class ContainsDigitsValidator:
+
+    def validate(self, password, user=None):
+        if not any(char.isdigit() for char in password):
+            raise ValidationError(
+                "Le mot de passe doit contenir au moins un nombre", code="password_no_digit"
+            )
+
+    def get_help_text(self):
+        return "Le mot de passe doit contenir au moins un nombre"
