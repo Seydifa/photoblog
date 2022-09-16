@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p>Vous etes connetez !</p>
+    <p>Vous sur votre de page de profil au nom de {{ request.user }}</p>
+    <a href="{% url 'se-deconnecter' %}">Se deconnecter</a>
+    <br>
+    <a href="{% url 'changepassord' %}">Changer de mot de passe</a>
+{% endblock %}
