@@ -1,10 +1,13 @@
 from django.db import models
-
 from authentification.models import User
 
 
+def user_photo_path(instance, filename):
+    return f"static/Images/Photos/{instance.uploader.id}/{filename}"
+
+
 class Photo(models.Model):
-    image = models.ImageField()
+    image = models.ImageField(upload_to=user_photo_path)
     caption = models.CharField(max_length=128, blank=True)
     uploader = models.ForeignKey(User, on_delete=models.CASCADE)
     date_created = models.DateTimeField(auto_now_add=True)

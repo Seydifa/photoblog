@@ -38,10 +38,6 @@ def logout_user(request):
     logout(request)
     return redirect('se-connecter')
 
-@login_required
-def home(request):
-    return render(request, 'blog/home.html')
-
 
 class SignUp(View):
     form_class = Signupform

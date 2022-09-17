@@ -2,8 +2,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
-from authentification.views import home, SignUp
-from blog.views import Telechargerphoto
+from authentification.views import SignUp
+from blog.views import Telechargerphoto, home, change_profile
 from photoblog import settings
 
 urlpatterns = [
@@ -27,7 +27,8 @@ urlpatterns = [
     path('signUp', SignUp.as_view(),
          name='signup'),
     path('photo/uploader', Telechargerphoto,
-         name="photo-uploader")
+         name="photo-uploader"),
+    path("change-profile", change_profile, name="change-profile")
 ]
 
 if settings.DEBUG:
