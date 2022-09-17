@@ -1,0 +1,71 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 16px;
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    display: flex;
+    flex-flow: row;
+}
+.sidebar{
+    width: 25%;
+    display: flex;
+    flex-flow: column;
+    background-color: #071e53;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    justify-items: center;
+    padding: 0 20px;
+    color: white;
+    text-align: center;
+    position: sticky;
+}
+.sidebar img{
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    margin-bottom: 30px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.config{
+    display: flex;
+    flex-flow: column;
+    text-align: left;
+    color: white;
+}
+.config a{
+    margin: 5px 10px;
+    color: white;
+}
+.photos{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+}
+.photo{
+    margin: 0 20px;
+    
+}
+.photo img{
+    width: 250px;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.content{
+    padding-left: 20px;
+}

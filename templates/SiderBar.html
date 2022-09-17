@@ -1,0 +1,18 @@
+    <div class="sidebar">
+        <h1>Photo Blog</h1>
+        <p>Bienvenue {{ request.user }}</p>
+        {% if request.user.profile_photo %}
+        <img src="{{ request.user.profile_photo.url }}" alt="profile" >
+        {% else %}
+            {% load static %}
+        <img src="{% static 'Images/Profiles/default/default.png' %}" alt="profile">
+        {% endif %}
+        <div class="config">
+            <a href="{% url 'home' %}">Acceuil</a>
+            <a href="{% url 'change-profile' %}">Change profile</a>
+            <a href="{% url 'changepassord' %}">Changer de mot de passe</a>
+            <a href="{% url 'blog-photo-upload' %}">Poster</a>
+            <a href="{% url 'photo-uploader' %}">Telechager votre photo</a>
+            <a href="{% url 'se-deconnecter' %}">Se deconnecter</a>
+        </div>
+    </div>

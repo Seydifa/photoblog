@@ -1,23 +1,24 @@
 {% extends 'base.html' %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'CSS/main.css' %}">
+{% endblock %}
 {% block content %}
-    <p>Vous etes connetez !</p>
-    <h2>Photo</h2>
-    <div class="photos" style="display: flex; flex-flow: row; justify-content: flex-start">
-        {% for photo in photos %}
-            {% load static %}
-            <div class="photo" style="display: flex; flex-flow: column; margin: 20px;">
-                <img src="{{ photo.image.url }}" style="width: 250px; height: 250px; margin-bottom: 15px;">
-                <figcaption>{{ photo.caption }}</figcaption>
+    <main >
+    <!-- Side Bar du fichier Sidebar -->
+        {% include 'SiderBar.html' %}
+    <!-- Contenue de notre Page -->
+        <div class="content" >
+            <h2>Photo</h2>
+            <div class="photos">
+                {% for photo in photos %}
+                    {% load static %}
+                    <div class="photo">
+                        <img src="{{ photo.image.url }}">
+                        <figcaption>{{ photo.caption }}</figcaption>
+                    </div>
+                {% endfor %}
             </div>
-        {% endfor %}
-    </div>
-    <p>Vous sur votre de page de profil au nom de {{ request.user }}</p>
-    <img src="{{ request.user.profile_photo.url }}" alt="">
-    <a href="{% url 'photo-uploader' %}">Telechager votre photo</a>
-    <br>
-    <a href="{% url 'se-deconnecter' %}">Se deconnecter</a>
-    <br>
-    <a href="{% url 'changepassord' %}">Changer de mot de passe</a>
-    <br>
-    <a href="{% url 'change-profile' %}">Change profile</a>
+        </div>
+    </main>
 {% endblock %}

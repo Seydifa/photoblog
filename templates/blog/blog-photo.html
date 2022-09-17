@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'CSS/main.css' %}">
+{% endblock %}
+{% block content %}
+<main>
+    {% include 'SiderBar.html' %}
+    <div class="content">
+        <h2>Creer une post</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% if blogform.errors %}
+                <div class="message">
+                    {{ blogform.errors }}
+                </div>
+            {% endif %}
+            {{ blogform.as_p }}
+            {% if photoform.errors %}
+                <div class="message">
+                    {{ photoform.errors }}
+                </div>
+            {% endif %}
+            {{ photoform.as_p }}
+            {% csrf_token %}
+            <button type="submit">Publier</button>
+        </form>
+    </div>
+</main>
+{% endblock %}

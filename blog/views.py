@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from django.views.generic import View
-from blog.forms import Photoform
+from blog.forms import Photoform, Blogform
 from authentification.forms import PhotoprofileUser
 from django.contrib.auth.decorators import login_required
 
@@ -39,4 +38,26 @@ def change_profile(request):
             return redirect('home')
     return render(request, 'blog/change-profile.html', context={
         "form": form
+    })
+
+
+@login_required
+def blog_photo_upload(request):
+    blogform = Blogform()
+    photoform = Photoform()
+    if request.method == "POST":
+        photoform = Photoform(request.POST, request.FILES)
+        blogform = Blogform(request.POST)
+        if all([photoform.is_valid(), blogform.is_valid()]):
+            photo = photoform.save(commit=False)
+            photo.uploader = request.user
+            photo.save()
+            blog = blogform.save(commit=False)
+            blog.autheur = request.user
+            blog.photo = photo
+            blog.save()
+            redirect('home')
+    return render(request, "blog/blog-photo.html", context={
+        "blogform": blogform,
+        "photoform": photoform
     })

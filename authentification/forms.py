@@ -4,7 +4,9 @@ from django.contrib.auth import get_user_model
 
 
 class Loginform(forms.Form):
-    username = forms.CharField(max_length=63, widget=forms.TextInput(attrs={}),
+    username = forms.CharField(max_length=63, widget=forms.TextInput(attrs={
+        "class": "form-control", "id": "inputPassword", "placeholder": "Mot de passe"
+    }),
                                label="Nom d'utilisateur")
     password = forms.CharField(max_length=63, widget=forms.PasswordInput(attrs={}),
                                label="Mot de passe")
