@@ -9,15 +9,26 @@
         {% include 'SiderBar.html' %}
     <!-- Contenue de notre Page -->
         <div class="content" >
+        <!-- Contenue des photos -->
             <h2>Photo</h2>
             <div class="photos">
                 {% for photo in photos %}
-                    {% load static %}
                     <div class="photo">
                         <img src="{{ photo.image.url }}">
                         <figcaption>{{ photo.caption }}</figcaption>
                     </div>
                 {% endfor %}
+            </div>
+            <h2>Blog</h2>
+            <div class="blog">
+                {% for blog in blogs %}
+                    <h3>{{ blog.title }}</h3>
+                    <a href="{% url 'blog-detail' blog.id %}" class="photo">
+                        <img src="{{ blog.photo.image.url }}" alt="">
+                        <figcaption>{{ blog.photo.caption  }}</figcaption>
+                    </a>
+                {% endfor %}
+
             </div>
         </div>
     </main>

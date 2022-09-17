@@ -9,6 +9,12 @@ class Photoform(forms.ModelForm):
 
 
 class Blogform(forms.ModelForm):
+    edit_blog = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+
     class Meta:
         model = Blog
         fields = ["title", "content"]
+
+
+class DeleteBlogform(forms.Form):
+    delete_blog = forms.BooleanField(widget=forms.HiddenInput, initial=True)

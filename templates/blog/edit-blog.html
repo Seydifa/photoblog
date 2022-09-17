@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block css %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'CSS/main.css' %}">
+{% endblock %}
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {{ edit_form.as_p }}
+        {{ delete_blog_form.as_p }}
+    </form>
+{% endblock %}

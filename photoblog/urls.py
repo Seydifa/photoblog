@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 from authentification.views import SignUp
-from blog.views import Telechargerphoto, home, change_profile, blog_photo_upload
+from blog.views import Telechargerphoto, home, change_profile, blog_photo_upload, get_blog
 from photoblog import settings
 
 urlpatterns = [
@@ -29,7 +29,8 @@ urlpatterns = [
     path('photo/uploader', Telechargerphoto,
          name="photo-uploader"),
     path("change-profile", change_profile, name="change-profile"),
-    path("blog/post/upload", blog_photo_upload, name='blog-photo-upload')
+    path("blog/post/upload", blog_photo_upload, name='blog-photo-upload'),
+    path("blog/<int:blog_id>", get_blog, name="blog-detail")
 ]
 
 if settings.DEBUG:

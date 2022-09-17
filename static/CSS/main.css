@@ -4,7 +4,7 @@
 
 body{
     font-size: 16px;
-    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif;
     font-weight: bold;
     margin: 0;
     padding: 0;
@@ -16,6 +16,7 @@ main{
 }
 .sidebar{
     width: 25%;
+    height: 100vh !important;
     display: flex;
     flex-flow: column;
     background-color: #071e53;
@@ -26,7 +27,8 @@ main{
     padding: 0 20px;
     color: white;
     text-align: center;
-    position: sticky;
+    position: fixed;
+    z-index: 9999;
 }
 .sidebar img{
     width: 250px;
@@ -35,6 +37,13 @@ main{
     margin-bottom: 30px;
     margin-right: auto;
     margin-left: auto;
+}
+
+.content{
+    padding-left: 20px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: 5px;
 }
 
 .config{
@@ -64,8 +73,4 @@ main{
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
-}
-
-.content{
-    padding-left: 20px;
 }

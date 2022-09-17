@@ -1,9 +1,8 @@
-from django.shortcuts import render, redirect
-from blog.forms import Photoform, Blogform
+from django.shortcuts import render, redirect, get_object_or_404
+from blog.forms import Photoform, Blogform, DeleteBlogform
 from authentification.forms import PhotoprofileUser
 from django.contrib.auth.decorators import login_required
-
-from blog.models import Photo
+from blog.models import Photo, Blog
 
 
 @login_required
@@ -24,9 +23,12 @@ def Telechargerphoto(request):
 @login_required
 def home(request):
     photos = Photo.objects.filter(uploader=request.user)
+    blogs = Blog.objects.filter(autheur=request.user)
     return render(request, 'blog/home.html', context={
-        "photos": photos
+        "photos": photos,
+        "blogs": blogs
     })
+
 
 @login_required
 def change_profile(request):
@@ -60,4 +62,24 @@ def blog_photo_upload(request):
     return render(request, "blog/blog-photo.html", context={
         "blogform": blogform,
         "photoform": photoform
+    })
+
+@login_required
+def get_blog(request, blog_id):
+    blog = get_object_or_404(Blog, id=blog_id)
+    return render(request, 'blog/blog-details.html', context={
+        "blog": blog
+    })
+
+
+@login_required
+def edit_blog(request, blog_id):
+    blog = get_object_or_404(Blog, id=blog_id)
+    edit_form = Blogform(instance=blog)
+    delete_blog_form = DeleteBlogform()
+    if request.method == 'POST':
+        pass
+    return render(request, 'blog/edit-blog.html', context={
+        "edit_form": edit_form,
+        "delete_blog_form": delete_blog_form
     })

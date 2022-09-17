@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block css %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'CSS/main.css' %}">
+{% endblock %}
+{% block content %}
+    <main>
+    {% include 'SiderBar.html' %}
+    <div class="content">
+        <h2>{{ blog.title }}</h2>
+        <div class="photo">
+            <img src="{{ blog.photo.image.url }}" alt="">
+            <figcaption>{{ blog.photo.caption }}</figcaption>
+        </div>
+        <p>{{ blog.content }}</p>
+        <span>{{ blog.date_created }}</span>
+    </div>
+    </main>
+{% endblock %}
+{% block js %}
+
+{% endblock %}

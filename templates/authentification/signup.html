@@ -1,12 +1,25 @@
 {% extends 'base.html' %}
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'CSS/inscriptions.css' %}">
+{% endblock %}
 {% block content %}
-    <h2>Inscription</h2>
-    {% if form.errors %}
-        {{ form.errors }}
-    {% endif %}
-    <form method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <button type="submit">Inscription</button>
-    </form>
+<main>
+    <header>
+        <h1>Photo Blog</h1>
+        <a href="{% url 'se-connecter' %}"><h2>Se connecter</h2></a>
+    </header>
+    <div class="container">
+        <h2>Inscription</h2>
+        <hr>
+        <form method="post">
+            {% if form.errors %}
+                {{ form.errors }}
+            {% endif %}
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit" class="button-4">Inscription</button>
+        </form>
+    </div>
+</main>
 {% endblock %}
