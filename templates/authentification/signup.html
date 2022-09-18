@@ -9,6 +9,10 @@
         <h1>Photo Blog</h1>
         <a href="{% url 'se-connecter' %}"><h2>Se connecter</h2></a>
     </header>
+    <div class="content">
+    <div class="illustration">
+        <img src="{% static 'Images/Icon/casual-life-3d-three-quarter-back-view-of-young-man-and-woman-sticking-notes-on-wall.png' %}">
+    </div>
     <div class="container">
         <h2>Inscription</h2>
         <hr>
@@ -20,6 +24,7 @@
             {% csrf_token %}
             <button type="submit" class="button-4">Inscription</button>
         </form>
+    </div>
     </div>
 </main>
 {% endblock %}

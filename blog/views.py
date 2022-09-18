@@ -58,7 +58,7 @@ def blog_photo_upload(request):
             blog.autheur = request.user
             blog.photo = photo
             blog.save()
-            redirect('home')
+            return redirect('home')
     return render(request, "blog/blog-photo.html", context={
         "blogform": blogform,
         "photoform": photoform
@@ -78,7 +78,16 @@ def edit_blog(request, blog_id):
     edit_form = Blogform(instance=blog)
     delete_blog_form = DeleteBlogform()
     if request.method == 'POST':
-        pass
+        if "edit_blog" in request.POST:
+            edit_form = Blogform(request.POST, instance=blog)
+            if edit_form.is_valid():
+                edit_form.save()
+            return redirect("home")
+        if "delete_blog" in request.POST:
+            delete_blog_form = DeleteBlogform(request.POST)
+            if delete_blog_form.is_valid():
+                blog.delete()
+            return redirect('home')
     return render(request, 'blog/edit-blog.html', context={
         "edit_form": edit_form,
         "delete_blog_form": delete_blog_form

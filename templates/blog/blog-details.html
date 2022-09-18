@@ -14,6 +14,10 @@
         </div>
         <p>{{ blog.content }}</p>
         <span>{{ blog.date_created }}</span>
+        <hr>
+        <div>
+            <a href="{% url 'blog-edit' blog.id%}" class="button-4">Modifier</a>
+        </div>
     </div>
     </main>
 {% endblock %}

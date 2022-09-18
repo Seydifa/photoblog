@@ -4,8 +4,18 @@
     <link rel="stylesheet" href="{% static 'CSS/main.css' %}">
 {% endblock %}
 {% block content %}
+    {% include 'SiderBar.html' %}
+<div class="content">
     <form method="post" enctype="multipart/form-data">
         {{ edit_form.as_p }}
-        {{ delete_blog_form.as_p }}
+        {% csrf_token %}
+         <button type="submit">modifier</button>
     </form>
+    <hr>
+    <form method="post">
+        {{ delete_blog_form.as_p }}
+        {% csrf_token %}
+    <button type="submit">supprimer</button>
+    </form>
+</div>
 {% endblock %}
